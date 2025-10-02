@@ -1,5 +1,5 @@
 set(Sources
-    FizzBuzz.cpp
+    fibonacci.cpp
     main.cpp
 )
 

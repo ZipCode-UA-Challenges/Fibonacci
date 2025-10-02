@@ -1,14 +1,11 @@
-# FizzBuzz
+# Fibonacci
 
 ## Description
 
-FizzBuzz is a common coding interview challenge that requires the programmer to print numbers from 1 through n, but with specific replacements.
-
-If the number is divisible by 3, print "Fizz". If the number is divisible by
-
-5, print "Buzz". If the number is divisible by both 3 and 5, print "FizzBuzz"
-
-Each number or string should be followed by a newline character.
+The Fibonacci sequence is a sequence of numbers defined as follows:
+- The $0^{th}$ Fibonacci number is $0$
+- The $1^{st}$ Fibonacci number is $1$
+- For $\{n|n>1\}$, the $n^{th}$ Fibonacci number is the sum of the $(n-1)^{th}$ and $(n-2)^{th}$ Fibonacci numbers.
 
 ## Getting Started
 
@@ -18,14 +15,14 @@ Each number or string should be followed by a newline character.
 ### Working in a Codespace
 
 - Click `<> Code` -> `Codespaces` -> `Create codespace on main`
-- Complete `src/FizzBuzz.cpp`
+- Complete `src/fibonacci.cpp`
 - Run the project
 
 ### Working Locally
 
 - Clone the copied repo provided to you through the github classroom link
 - Open the project in your editor of choice
-- Complete `src/FizzBuzz.cpp`
+- Complete `src/fibonacci.cpp`
 - Run the project
 
 ## How to Run the Project
@@ -62,4 +59,4 @@ Each number or string should be followed by a newline character.
 > [!CAUTION]
 > Contains answers after scrolling. Please try the problem yourself first!
 > 
-> [GeeksForGeeks FizzBuzz](https://www.geeksforgeeks.org/dsa/fizz-buzz-implementation/)
+> [GeeksForGeeks Fibonacci](https://www.geeksforgeeks.org/maths/fibonacci-sequence/)

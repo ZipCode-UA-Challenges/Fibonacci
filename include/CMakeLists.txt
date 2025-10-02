@@ -1,5 +1,5 @@
 set(Includes
-    FizzBuzz.hpp
+    fibonacci.hpp
 )
 
 add_library(include INTERFACE ${Includes})
