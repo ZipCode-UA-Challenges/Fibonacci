@@ -25,6 +25,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    if (n < 0 || n > fibonacci::MAX_64_BIT_FIBONACCI_INDEX) {
+        std::cerr << "Error: Argument must be between 0 and " << fibonacci::MAX_64_BIT_FIBONACCI_INDEX << ".\n";
+        return 1;
+    }
+
     const auto start = std::chrono::high_resolution_clock::now();
     // Store result in a volatile variable to strongly suggest no compiler optimizations
     volatile uint64_t result = fibonacci::fibonacci(n);
