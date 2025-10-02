@@ -8,12 +8,15 @@
  *          outputs.
  */
 
+#include <array>
 #include <chrono>
+#include <cstdint>
 #include <iostream>
 #include <string>
 #include <sstream>
 
 #include "fibonacci.hpp"
+#include "precompute_fibonacci.hpp"
 
 void fibonacciVerifier(std::array<uint64_t, fibonacci::MAX_64_BIT_FIBONACCI_INDEX + 1>& results, int start, int end) {
     for (int i = start; i <= end; ++i) {
