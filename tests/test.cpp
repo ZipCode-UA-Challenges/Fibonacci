@@ -16,6 +16,10 @@
 #include <sstream>
 
 #include "fibonacci.hpp"
+// Check if the user cheated by using the precomputed solutions
+#ifdef PRECOMPUTE_FIBONACCI_HPP
+#error "You are not allowed to use the precomputed Fibonacci solutions in your implementation!"
+#endif
 #include "precompute_fibonacci.hpp"
 
 void fibonacciVerifier(std::array<uint64_t, fibonacci::MAX_64_BIT_FIBONACCI_INDEX + 1>& results, int start, int end) {
