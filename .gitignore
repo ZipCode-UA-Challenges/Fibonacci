@@ -36,3 +36,6 @@ build
 .build
 .cache
 .DS_Store
+
+# IDE: Visual Studio Code
+.vscode/*
