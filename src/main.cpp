@@ -30,14 +30,21 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    const auto start = std::chrono::high_resolution_clock::now();
+    const auto startSingle = std::chrono::high_resolution_clock::now();
     // Store result in a volatile variable to strongly suggest no compiler optimizations
     volatile uint64_t result = fibonacci::fibonacci(n);
-    const auto end = std::chrono::high_resolution_clock::now();
-    const auto durationMicroseconds = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    const auto endSingle = std::chrono::high_resolution_clock::now();
+    const auto durationNanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(endSingle - startSingle);
 
-    std::cout << "The " << n << "th Fibonacci number is " << result << '\n';
-    std::cout << "Program execution time: " << durationMicroseconds.count() << " Microseconds" << "\n";
+    std::array<uint64_t, fibonacci::MAX_64_BIT_FIBONACCI_INDEX + 1> results = {0};
+    const auto startRacer = std::chrono::high_resolution_clock::now();
+    fibonacci::fibonacciRacer(results, 0, n);
+    const auto endRacer = std::chrono::high_resolution_clock::now();
+    const auto durationRacerNanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(endRacer - startRacer);
+
+    std::cout << "fibonacci::fibonacci(" << n << ") = " << result << '\n';
+    std::cout << "Computed fibonacci::fibonacci(" << n << ") in " << durationNanoseconds.count() << " Nanoseconds" << "\n";
+    std::cout << "Computed fibonacci::fibonacciRacer(0, " << n << ") in " << durationRacerNanoseconds.count() << " Nanoseconds" << "\n";
 
     return 0;
 }
