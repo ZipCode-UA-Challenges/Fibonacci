@@ -9,10 +9,12 @@
 
 #include <array>
 #include <cstdint>
+#include "uint256_t.hpp"
 
 namespace fibonacci {
 
 constexpr int MAX_64_BIT_FIBONACCI_INDEX = 92;
+constexpr int MAX_256_BIT_FIBONACCI_INDEX = 374; // Maximum index for Fibonacci numbers that fit in 256 bits
 
 /**
  * @brief Computes Fibonacci numbers in a specified range and stores them in the provided array.
@@ -27,7 +29,7 @@ constexpr int MAX_64_BIT_FIBONACCI_INDEX = 92;
  * @note This function is designed to compute Fibonacci numbers up to the 92nd index, as Fibonacci
  *       numbers beyond this index exceed the storage capacity of a 64-bit unsigned integer.
  */
-void fibonacciRacer(std::array<uint64_t, MAX_64_BIT_FIBONACCI_INDEX + 1>& results, int start, int end);
+void fibonacciRacer(std::array<uint256_t, MAX_256_BIT_FIBONACCI_INDEX + 1>& results, int start, int end);
 
 /**
  * @brief Computes the n-th number in the Fibonacci sequence.
@@ -43,7 +45,7 @@ void fibonacciRacer(std::array<uint64_t, MAX_64_BIT_FIBONACCI_INDEX + 1>& result
  * 
  * @return The n-th Fibonacci number.
  */
-uint64_t fibonacci(int n);
+uint256_t fibonacci(int n);
 
 } // namespace fibonacci
 

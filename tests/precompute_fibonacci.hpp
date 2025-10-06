@@ -11,21 +11,23 @@
 #ifndef PRECOMPUTE_FIBONACCI_HPP
 #define PRECOMPUTE_FIBONACCI_HPP
 
+#include "uint256_t.hpp"
 #include <array>
 #include <cstdint>
 
 constexpr int SOLUTION_COUNT = 94; // Number of Fibonacci numbers to precompute
+constexpr int SOLUTION_COUNT_256BIT = 375; // Number of Fibonacci numbers to precompute for 256-bit
 
-constexpr std::array<uint64_t, SOLUTION_COUNT> precomputeFiconacci() {
-    std::array<uint64_t, SOLUTION_COUNT> fibs = {0};
+constexpr std::array<uint256_t, SOLUTION_COUNT_256BIT> precomputeFiconacci() {
+    std::array<uint256_t, SOLUTION_COUNT_256BIT> fibs = {0};
     fibs[0] = 0;
     fibs[1] = 1;
-    for (int i = 2; i < SOLUTION_COUNT; ++i) {
+    for (int i = 2; i < SOLUTION_COUNT_256BIT; ++i) {
         fibs[i] = fibs[i - 1] + fibs[i - 2];
     }
     return fibs;
 }
 
-constexpr std::array<uint64_t, SOLUTION_COUNT> FIBONACCI_SOLUTIONS = precomputeFiconacci();
+constexpr std::array<uint256_t, SOLUTION_COUNT_256BIT> FIBONACCI_SOLUTIONS = precomputeFiconacci();
 
 #endif // PRECOMPUTE_FIBONACCI_HPP

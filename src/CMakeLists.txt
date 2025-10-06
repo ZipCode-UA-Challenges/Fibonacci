@@ -1,6 +1,7 @@
 set(Sources
     fibonacci.cpp
     main.cpp
+    choose_timer_unit.cpp
 )
 
 set(Dirs

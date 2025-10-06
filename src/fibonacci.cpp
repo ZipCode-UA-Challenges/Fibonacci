@@ -6,16 +6,17 @@
  */
 
 #include "fibonacci.hpp"
+#include "uint256_t.hpp"
 
 namespace fibonacci {
 
-void fibonacciRacer(std::array<uint64_t, MAX_64_BIT_FIBONACCI_INDEX + 1>& results, int start, int end) {
+void fibonacciRacer(std::array<uint256_t, MAX_256_BIT_FIBONACCI_INDEX + 1>& results, int start, int end) {
     /**
      * @todo Implement the fibonacciRacer function declared in include/fibonacci.hpp.
      */
 }
 
-uint64_t fibonacci(int n) {
+uint256_t fibonacci(int n) {
     /**
      * @todo Implement the fibonacci function declared in include/fibonacci.hpp.
      */

@@ -4,7 +4,9 @@
 #include <stdexcept>
 #include <string>
 
+#include "choose_timer_unit.hpp"
 #include "fibonacci.hpp"
+#include "uint256_t.hpp"
 
 int main(int argc, char* argv[]) {
 
@@ -25,26 +27,28 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    if (n < 0 || n > fibonacci::MAX_64_BIT_FIBONACCI_INDEX) {
-        std::cerr << "Error: Argument must be between 0 and " << fibonacci::MAX_64_BIT_FIBONACCI_INDEX << ".\n";
+    if (n < 0 || n > fibonacci::MAX_256_BIT_FIBONACCI_INDEX) {
+        std::cerr << "Error: Argument must be between 0 and " << fibonacci::MAX_256_BIT_FIBONACCI_INDEX << ".\n";
         return 1;
     }
 
     const auto startSingle = std::chrono::high_resolution_clock::now();
     // Store result in a volatile variable to strongly suggest no compiler optimizations
-    volatile uint64_t result = fibonacci::fibonacci(n);
+    uint256_t result = fibonacci::fibonacci(n);
+    volatile uint256_t sink = result; // Tell the compiler not to optimize away the call
     const auto endSingle = std::chrono::high_resolution_clock::now();
     const auto durationNanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(endSingle - startSingle);
 
-    std::array<uint64_t, fibonacci::MAX_64_BIT_FIBONACCI_INDEX + 1> results = {0};
+    std::array<uint256_t, fibonacci::MAX_256_BIT_FIBONACCI_INDEX + 1> results = {UINT64_C(0)};
     const auto startRacer = std::chrono::high_resolution_clock::now();
     fibonacci::fibonacciRacer(results, 0, n);
     const auto endRacer = std::chrono::high_resolution_clock::now();
     const auto durationRacerNanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(endRacer - startRacer);
+    const std::string durationReport = chooseTimerUnits(durationNanoseconds);
+    const std::string durationRacerReport = chooseTimerUnits(durationRacerNanoseconds);
 
     std::cout << "fibonacci::fibonacci(" << n << ") = " << result << '\n';
-    std::cout << "Computed fibonacci::fibonacci(" << n << ") in " << durationNanoseconds.count() << " Nanoseconds" << "\n";
-    std::cout << "Computed fibonacci::fibonacciRacer(0, " << n << ") in " << durationRacerNanoseconds.count() << " Nanoseconds" << "\n";
-
+    std::cout << "Computed fibonacci::fibonacci(" << n << ") in " << durationReport << "\n";
+    std::cout << "Computed fibonacci::fibonacciRacer(0, " << n << ") in " << durationRacerReport << "\n";
     return 0;
 }
