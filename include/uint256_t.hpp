@@ -244,6 +244,8 @@ public:
     }
 
     friend std::ostream& operator<<(std::ostream& os, const uint256_t& value);
+    friend constexpr uint256_t operator<<(uint256_t lhs, uint32_t rhs);
+    friend constexpr uint256_t operator>>(uint256_t lhs, uint32_t rhs);
 
 };
 
